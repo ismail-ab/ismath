@@ -2,15 +2,15 @@ import * as React from 'react';
 import {
   Card,
   CardContent,
-  Grid,
-  Typography
+  Grid
 } from '@material-ui/core';
 import {
   Clear,
   Comma,
   Digits,
   Equal,
-  Operators
+  Operators,
+  Screen
 } from '../components';
 
 interface ICalculatorContainerState {
@@ -64,71 +64,47 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainerState>
 
   render() {
     return (
-      <div
+      <Grid
+        container={true}
+        direction="column"
+        justify="center"
         style={{
           height: '100%',
           width: '100%',
-          display: 'flex',
           position: 'absolute',
         }}
       >
         <Grid
           container={true}
-          direction="column"
           justify="center"
         >
+          <Card style={{ width: '348px' }}>
+            <CardContent>
+              <Screen {...this.state} />
+              <Clear clearCalculator={this.clearCalculator} />
+            </CardContent>
+          </Card>
+        </Grid>
+        <Grid
+          container={true}
+          direction="row-reverse"
+          justify="center"
+        >
+          <Operators concatenateCharacters={this.concatenateCharacters} />
           <Grid
             container={true}
             justify="center"
-          >
-            <Card style={{ width: '348px' }}>
-              <CardContent>
-                <Typography
-                  color="primary"
-                  variant="headline"
-                  component="h2"
-                  align="right"
-                  style={{ height: '40px' }}
-                >
-                  {this.state.result}
-                </Typography>
-                <Typography
-                  color="secondary"
-                  component="h2"
-                  align="right"
-                  noWrap={true}
-                  style={{
-                    height: '25px',
-                    fontSize: '1.2em'
-                  }}
-                >
-                  {this.state.concatenatedCharacters}
-                </Typography>
-                <Clear clearCalculator={this.clearCalculator} />
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid
-            container={true}
+            alignItems="center"
             direction="row-reverse"
-            justify="center"
+            spacing={0}
+            style={{ width: '260px' }}
           >
-            <Operators concatenateCharacters={this.concatenateCharacters} />
-            <Grid
-              container={true}
-              justify="center"
-              alignItems="center"
-              direction="row-reverse"
-              spacing={0}
-              style={{ width: '260px' }}
-            >
-              <Digits concatenateCharacters={this.concatenateCharacters} />
-              <Comma concatenateCharacters={this.concatenateCharacters} />
-              <Equal computeConcatenatedCharacters={this.computeConcatenatedCharacters} />
-            </Grid>
+            <Digits concatenateCharacters={this.concatenateCharacters} />
+            <Comma concatenateCharacters={this.concatenateCharacters} />
+            <Equal computeConcatenatedCharacters={this.computeConcatenatedCharacters} />
           </Grid>
         </Grid>
-      </div >
+      </Grid>
     );
   }
 }
