@@ -34,7 +34,7 @@ const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
         variant="raised"
         onClick={() => handleClick(characterForCalculate)}
         style={{ 
-          height: '60px',
+          height: '4em',
           borderRadius: '0',
           fontSize: '1.2em'
         }}

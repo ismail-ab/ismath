@@ -1,1 +1,1 @@
-export { CalculatorContainer } from './Calculator';
+export { Calculator } from './Calculator';

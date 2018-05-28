@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
-import { Grid } from '@material-ui/core';
 
 interface IOperatorsOwnProps {
   concatenateCharacters: Function;
@@ -42,9 +41,9 @@ const Operators: React.SFC<IOperatorsOwnProps> = ({ concatenateCharacters }) => 
   ));
 
   return (
-    <Grid>
+    <>
       {createOperatorsButton()}
-    </Grid>
+    </>
   );
 };
 

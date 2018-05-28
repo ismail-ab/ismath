@@ -1,1 +1,1 @@
-export { CalculatorContainer } from './scenes';
+export { Calculator } from './scenes';

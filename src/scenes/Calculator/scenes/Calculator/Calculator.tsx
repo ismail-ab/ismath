@@ -18,7 +18,7 @@ interface ICalculatorContainerState {
   result: number | string;
 }
 
-class CalculatorContainer extends React.Component<{}, ICalculatorContainerState> {
+class Calculator extends React.Component<{}, ICalculatorContainerState> {
   constructor(props: {}) {
     super(props);
 
@@ -90,7 +90,9 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainerState>
           direction="row-reverse"
           justify="center"
         >
-          <Operators concatenateCharacters={this.concatenateCharacters} />
+          <Grid>
+            <Operators concatenateCharacters={this.concatenateCharacters} />
+          </Grid>
           <Grid
             container={true}
             justify="center"
@@ -109,4 +111,4 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainerState>
   }
 }
 
-export default CalculatorContainer;
+export default Calculator;
