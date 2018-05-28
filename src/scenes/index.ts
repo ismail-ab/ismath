@@ -1,1 +1,1 @@
-export { default as CalculatorContainer } from './CalculatorContainer';
+export { CalculatorContainer } from './Calculator';
