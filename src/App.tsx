@@ -1,11 +1,8 @@
 import * as React from 'react';
+import { CalculatorContainer } from './scenes';
 
-class App extends React.Component {
-  public render() {
-    return (
-      "hello world"
-    );
-  }
-}
+const App: React.SFC = () => (
+  <CalculatorContainer />
+);
 
 export default App;
