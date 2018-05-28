@@ -28,7 +28,7 @@ class Calculator extends React.Component<{}, ICalculatorState> {
       concatenatedCharacters: '',
       result: '',
       clearCalculator: this.clearCalculator.bind(this),
-      concatenateCharacters: this.concatenateCharacters.bind(this),
+      concatenateCharactersOrCompute: this.concatenateCharactersOrCompute.bind(this),
     };
   }
 
@@ -39,7 +39,7 @@ class Calculator extends React.Component<{}, ICalculatorState> {
     });
   }
 
-  concatenateCharacters(character: string) {
+  concatenateCharactersOrCompute(character: string) {
     this.setState((prevState) => {
       if (character !== '=') {
         return {
@@ -65,7 +65,7 @@ class Calculator extends React.Component<{}, ICalculatorState> {
           style={{
             height: '100%',
             width: '100%',
-            position: 'absolute',
+            position: 'absolute'
           }}
         >
           <Grid

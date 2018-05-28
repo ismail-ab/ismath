@@ -17,13 +17,9 @@ const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
     color = 'primary'
   } = props;
 
-  const handleClick = (concatenateCharacters: Function, _character: string) => {
-    concatenateCharacters(_character);
-  };
-
   return (
     <CalculatorContext.Consumer>
-      {({ concatenateCharacters }) => (
+      {({ concatenateCharactersOrCompute }) => (
         <Grid
           item={true}
           xs={4}
@@ -31,7 +27,7 @@ const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
           <Button
             color={color}
             variant="raised"
-            onClick={() => handleClick(concatenateCharacters, characterToDisplay)}
+            onClick={() => concatenateCharactersOrCompute(characterToDisplay)}
             style={{
               height: '4em',
               borderRadius: '0',

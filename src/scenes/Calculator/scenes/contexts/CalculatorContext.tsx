@@ -4,12 +4,12 @@ export interface ICalculatorContext {
   concatenatedCharacters: string;
   result: number | string;
   clearCalculator: Function;
-  concatenateCharacters: Function;
+  concatenateCharactersOrCompute: Function;
 }
 
 export const CalculatorContext = React.createContext<ICalculatorContext>({
   concatenatedCharacters: '',
   result: '',
   clearCalculator: () => ({}),
-  concatenateCharacters: () => ({}),
+  concatenateCharactersOrCompute: () => ({}),
 });
