@@ -7,14 +7,12 @@ import {
 import { CalculatorContext } from '../../../Calculator/Calculator';
 
 interface ICharacterButtonOwnProps {
-  characterForCalculate: string;
   characterToDisplay: string;
   color?: PropTypes.Color;
 }
 
 const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
   const {
-    characterForCalculate,
     characterToDisplay,
     color = 'primary'
   } = props;
@@ -33,7 +31,7 @@ const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
           <Button
             color={color}
             variant="raised"
-            onClick={() => handleClick(concatenateCharacters, characterForCalculate)}
+            onClick={() => handleClick(concatenateCharacters, characterToDisplay)}
             style={{
               height: '4em',
               borderRadius: '0',

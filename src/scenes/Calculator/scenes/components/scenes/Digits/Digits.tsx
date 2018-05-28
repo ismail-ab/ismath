@@ -8,7 +8,6 @@ const Digits: React.SFC = () => {
   const createDigitsButton = () => digitsArray.map(digit => (
     <CharacterButton
       key={digit}
-      characterForCalculate={digit.toString()}
       characterToDisplay={digit.toString()}
     />
   ));

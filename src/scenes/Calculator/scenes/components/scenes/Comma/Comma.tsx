@@ -6,7 +6,6 @@ const Comma: React.SFC = () => (
   <CalculatorContext.Consumer>
     {({ concatenateCharacters }) => (
       <CharacterButton
-        characterForCalculate="."
         characterToDisplay="."
         color="primary"
       />

@@ -1,36 +1,13 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
 
-interface IOperator {
-  operatorForCalculate: string;
-  operatorToDisplay: string;
-}
-
 const Operators: React.SFC = () => {
-  const operatorsArray: IOperator[] = [
-    {
-      operatorForCalculate: '+',
-      operatorToDisplay: '+'
-    },
-    {
-      operatorForCalculate: '-',
-      operatorToDisplay: '−'
-    },
-    {
-      operatorForCalculate: '*',
-      operatorToDisplay: '×'
-    },
-    {
-      operatorForCalculate: '/',
-      operatorToDisplay: '÷'
-    }
-  ];
+  const operators: string[] = ['+', '−', '×', '÷'];
 
-  const createOperatorsButton = () => operatorsArray.map(operator => (
+  const createOperatorsButton = () => operators.map(operator => (
     <CharacterButton
-      key={operator.operatorForCalculate}
-      characterForCalculate={operator.operatorForCalculate}
-      characterToDisplay={operator.operatorToDisplay}
+      key={operator}
+      characterToDisplay={operator}
       color="secondary"
     />
   ));
