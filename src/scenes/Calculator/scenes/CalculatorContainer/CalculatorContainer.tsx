@@ -1,37 +1,33 @@
+import * as React from 'react';
 import {
   Button,
   Grid
-} from "@material-ui/core";
-import { range } from 'lodash';
-import * as React from "react";
+} from '@material-ui/core';
+import { Digits } from '../components';
 
-interface ICalculatorContainer {
+interface ICalculatorContainerState {
   calculatorButtons: Array<string | number>;
   characterToCalculate: string;
   result: number;
 }
 
-class CalculatorContainer extends React.Component<{}, ICalculatorContainer> {
+class CalculatorContainer extends React.Component<{}, ICalculatorContainerState> {
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      calculatorButtons: [...range(10).reverse(), '+', '−', '*', '/', '.', 'C', '🐵'],
+      calculatorButtons: ['+', '−', '*', '/', '.', 'C', '🐵'],
       characterToCalculate: '',
       result: 0
-    }
+    };
 
-    this.calculate = this.calculate.bind(this);
+    this.concatCharacters = this.concatCharacters.bind(this);
   }
 
-  public componentDidCatch() {
-    alert('Error');
-  }
-
-  public res(str: string) {
+  res(str: string) {
     function calc(strr: string) {
       try {
-        return new Function('return ' + strr)()
+        return new Function('return ' + strr)();
       } catch {
         return 0;
       }
@@ -42,15 +38,16 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainer> {
     });
   }
 
-  public calculate(char: string | number) {
+  concatCharacters(character: string) {
     this.setState((prevState) => {
       return {
-        characterToCalculate: prevState.characterToCalculate + char.toString(),
-      }
+        ...prevState,
+        characterToCalculate: prevState.characterToCalculate + character,
+      };
     });
   }
 
-  public render() {
+  render() {
     return (
       <div>
         <div>Res: {this.state.result}</div>
@@ -63,23 +60,7 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainer> {
           spacing={0}
           style={{ width: '250px' }}
         >
-          {
-            this.state.calculatorButtons.map(value => (
-              <Grid
-                item={true}
-                key={value}
-                xs={4}
-              >
-                <Button
-                  color="primary"
-                  variant="raised"
-                  onClick={this.calculate.bind(this, value)}
-                >
-                  {value}
-                </Button>
-              </Grid>
-            ))
-          }
+          <Digits concatCharacters={this.concatCharacters} />
 
           <Grid
             item={true}
@@ -95,8 +76,8 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainer> {
           </Grid>
         </Grid>
       </div >
-    )
+    );
   }
-};
+}
 
 export default CalculatorContainer;
