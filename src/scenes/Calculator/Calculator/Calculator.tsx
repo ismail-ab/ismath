@@ -12,7 +12,7 @@ import {
   Operators,
   Screen
 } from '../components';
-import { compute } from './helpers';
+import { compute } from '../helpers';
 import {
   CalculatorContext,
   ICalculatorContext
