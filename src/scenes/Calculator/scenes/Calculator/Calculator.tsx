@@ -12,6 +12,7 @@ import {
   Operators,
   Screen
 } from '../components';
+import { compute } from './helpers';
 
 interface ICalculatorContainerState {
   concatenatedCharacters: string;
@@ -49,16 +50,8 @@ class Calculator extends React.Component<{}, ICalculatorContainerState> {
   }
 
   computeConcatenatedCharacters() {
-    function evaluate(_concatenatedCharacters: string) {
-      try {
-        return new Function('return ' + _concatenatedCharacters)();
-      } catch {
-        return 'Expression error';
-      }
-    }
-
     this.setState({
-      result: evaluate(this.state.concatenatedCharacters)
+      result: compute(this.state.concatenatedCharacters)
     });
   }
 
