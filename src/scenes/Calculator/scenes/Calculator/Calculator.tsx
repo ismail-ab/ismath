@@ -13,20 +13,12 @@ import {
   Screen
 } from '../components';
 import { compute } from './helpers';
+import {
+  CalculatorContext,
+  ICalculatorContext
+} from '../contexts';
 
-interface ICalculatorState {
-  concatenatedCharacters: string;
-  result: number | string;
-  clearCalculator: Function;
-  concatenateCharacters: Function;
-}
-
-export const CalculatorContext = React.createContext<ICalculatorState>({
-  concatenatedCharacters: '',
-  result: '',
-  clearCalculator: () => ({}),
-  concatenateCharacters: () => ({}),
-});
+interface ICalculatorState extends ICalculatorContext { }
 
 class Calculator extends React.Component<{}, ICalculatorState> {
   constructor(props: {}) {

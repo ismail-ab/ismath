@@ -1,5 +1,6 @@
 const replaceDisplayedCharactersBySymbolsForCompute: (concatenatedCharacters: string)
   => string = (concatenatedCharacters) => concatenatedCharacters
+    .replace('−', '-')
     .replace('×', '*')
     .replace('÷', '/');
 

@@ -4,7 +4,7 @@ import {
   Grid,
   PropTypes
 } from '@material-ui/core';
-import { CalculatorContext } from '../../../Calculator/Calculator';
+import { CalculatorContext } from '../../../contexts';
 
 interface ICharacterButtonOwnProps {
   characterToDisplay: string;

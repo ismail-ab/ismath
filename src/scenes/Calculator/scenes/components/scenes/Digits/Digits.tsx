@@ -5,7 +5,7 @@ import { CharacterButton } from '../../components';
 const Digits: React.SFC = () => {
   const digitsArray: number[] = range(10).reverse();
 
-  const createDigitsButton = () => digitsArray.map(digit => (
+  const createDigitsButtons = () => digitsArray.map(digit => (
     <CharacterButton
       key={digit}
       characterToDisplay={digit.toString()}
@@ -14,7 +14,7 @@ const Digits: React.SFC = () => {
 
   return (
     <>
-      {createDigitsButton()}
+      {createDigitsButtons()}
     </>
   );
 };

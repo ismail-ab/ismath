@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
-import { CalculatorContext } from '../../../Calculator/Calculator';
+import { CalculatorContext } from '../../../contexts';
 
 const Comma: React.SFC = () => (
   <CalculatorContext.Consumer>

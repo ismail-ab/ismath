@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Button } from '@material-ui/core';
 import { Delete } from '@material-ui/icons';
-import { CalculatorContext } from '../../../Calculator/Calculator';
+import { CalculatorContext } from '../../../contexts';
 
 const Clear: React.SFC = () => (
   <CalculatorContext.Consumer>
