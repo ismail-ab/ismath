@@ -1,10 +1,10 @@
-const replaceDisplayedCharactersBySymbolsForCompute: (concatenatedCharacters: string)
+export const replaceDisplayedCharactersBySymbolsForCompute: (concatenatedCharacters: string)
   => string = (concatenatedCharacters) => concatenatedCharacters
     .replace('−', '-')
     .replace('×', '*')
     .replace('÷', '/');
 
-const compute: (concatenatedCharacters: string) => string = (concatenatedCharacters) => {
+export const compute: (concatenatedCharacters: string) => string = (concatenatedCharacters) => {
   try {
     return new Function('return ' + replaceDisplayedCharactersBySymbolsForCompute(concatenatedCharacters))();
   } catch {

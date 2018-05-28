@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Digits renders correctly 1`] = `
+<React.Fragment>
+  <CharacterButton
+    characterToDisplay="9"
+    key="9"
+  />
+  <CharacterButton
+    characterToDisplay="8"
+    key="8"
+  />
+  <CharacterButton
+    characterToDisplay="7"
+    key="7"
+  />
+  <CharacterButton
+    characterToDisplay="6"
+    key="6"
+  />
+  <CharacterButton
+    characterToDisplay="5"
+    key="5"
+  />
+  <CharacterButton
+    characterToDisplay="4"
+    key="4"
+  />
+  <CharacterButton
+    characterToDisplay="3"
+    key="3"
+  />
+  <CharacterButton
+    characterToDisplay="2"
+    key="2"
+  />
+  <CharacterButton
+    characterToDisplay="1"
+    key="1"
+  />
+  <CharacterButton
+    characterToDisplay="0"
+    key="0"
+  />
+</React.Fragment>
+`;
