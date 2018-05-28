@@ -14,23 +14,30 @@ import {
 } from '../components';
 import { compute } from './helpers';
 
-interface ICalculatorContainerState {
+interface ICalculatorState {
   concatenatedCharacters: string;
   result: number | string;
+  clearCalculator: Function;
+  concatenateCharacters: Function;
 }
 
-class Calculator extends React.Component<{}, ICalculatorContainerState> {
+export const CalculatorContext = React.createContext<ICalculatorState>({
+  concatenatedCharacters: '',
+  result: '',
+  clearCalculator: () => ({}),
+  concatenateCharacters: () => ({}),
+});
+
+class Calculator extends React.Component<{}, ICalculatorState> {
   constructor(props: {}) {
     super(props);
 
     this.state = {
       concatenatedCharacters: '',
-      result: ''
+      result: '',
+      clearCalculator: this.clearCalculator.bind(this),
+      concatenateCharacters: this.concatenateCharacters.bind(this),
     };
-
-    this.clearCalculator = this.clearCalculator.bind(this);
-    this.concatenateCharacters = this.concatenateCharacters.bind(this);
-    this.computeConcatenatedCharacters = this.computeConcatenatedCharacters.bind(this);
   }
 
   clearCalculator() {
@@ -42,64 +49,67 @@ class Calculator extends React.Component<{}, ICalculatorContainerState> {
 
   concatenateCharacters(character: string) {
     this.setState((prevState) => {
-      return {
-        ...prevState,
-        concatenatedCharacters: prevState.concatenatedCharacters + character,
-      };
-    });
-  }
-
-  computeConcatenatedCharacters() {
-    this.setState({
-      result: compute(this.state.concatenatedCharacters)
+      if (character !== '=') {
+        return {
+          ...prevState,
+          concatenatedCharacters: prevState.concatenatedCharacters + character,
+        };
+      } else {
+        return {
+          ...prevState,
+          result: compute(this.state.concatenatedCharacters)
+        };
+      }
     });
   }
 
   render() {
     return (
-      <Grid
-        container={true}
-        direction="column"
-        justify="center"
-        style={{
-          height: '100%',
-          width: '100%',
-          position: 'absolute',
-        }}
-      >
+      <CalculatorContext.Provider value={this.state}>
         <Grid
           container={true}
+          direction="column"
           justify="center"
+          style={{
+            height: '100%',
+            width: '100%',
+            position: 'absolute',
+          }}
         >
-          <Card style={{ width: '348px' }}>
-            <CardContent>
-              <Screen {...this.state} />
-              <Clear clearCalculator={this.clearCalculator} />
-            </CardContent>
-          </Card>
-        </Grid>
-        <Grid
-          container={true}
-          direction="row-reverse"
-          justify="center"
-        >
-          <Grid>
-            <Operators concatenateCharacters={this.concatenateCharacters} />
-          </Grid>
           <Grid
             container={true}
             justify="center"
-            alignItems="center"
-            direction="row-reverse"
-            spacing={0}
-            style={{ width: '260px' }}
           >
-            <Digits concatenateCharacters={this.concatenateCharacters} />
-            <Comma concatenateCharacters={this.concatenateCharacters} />
-            <Equal computeConcatenatedCharacters={this.computeConcatenatedCharacters} />
+            <Card style={{ width: '348px' }}>
+              <CardContent>
+                <Screen />
+                <Clear />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid
+            container={true}
+            direction="row-reverse"
+            justify="center"
+          >
+            <Grid>
+              <Operators />
+            </Grid>
+            <Grid
+              container={true}
+              justify="center"
+              alignItems="center"
+              direction="row-reverse"
+              spacing={0}
+              style={{ width: '260px' }}
+            >
+              <Digits />
+              <Comma />
+              <Equal />
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </CalculatorContext.Provider>
     );
   }
 }

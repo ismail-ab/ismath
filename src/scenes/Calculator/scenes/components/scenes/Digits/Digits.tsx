@@ -2,11 +2,7 @@ import * as React from 'react';
 import { range } from 'lodash';
 import { CharacterButton } from '../../components';
 
-interface IDigitsOwnProps {
-  concatenateCharacters: Function;
-}
-
-const Digits: React.SFC<IDigitsOwnProps> = ({ concatenateCharacters }) => {
+const Digits: React.SFC = () => {
   const digitsArray: number[] = range(10).reverse();
 
   const createDigitsButton = () => digitsArray.map(digit => (
@@ -14,7 +10,6 @@ const Digits: React.SFC<IDigitsOwnProps> = ({ concatenateCharacters }) => {
       key={digit}
       characterForCalculate={digit.toString()}
       characterToDisplay={digit.toString()}
-      onClickAction={concatenateCharacters}
     />
   ));
 

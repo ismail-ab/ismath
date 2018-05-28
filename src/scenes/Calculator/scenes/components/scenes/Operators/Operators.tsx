@@ -1,16 +1,12 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
 
-interface IOperatorsOwnProps {
-  concatenateCharacters: Function;
-}
-
 interface IOperator {
   operatorForCalculate: string;
   operatorToDisplay: string;
 }
 
-const Operators: React.SFC<IOperatorsOwnProps> = ({ concatenateCharacters }) => {
+const Operators: React.SFC = () => {
   const operatorsArray: IOperator[] = [
     {
       operatorForCalculate: '+',
@@ -35,7 +31,6 @@ const Operators: React.SFC<IOperatorsOwnProps> = ({ concatenateCharacters }) => 
       key={operator.operatorForCalculate}
       characterForCalculate={operator.operatorForCalculate}
       characterToDisplay={operator.operatorToDisplay}
-      onClickAction={concatenateCharacters}
       color="secondary"
     />
   ));

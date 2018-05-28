@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
 
-interface IEqualOwnProps {
-  computeConcatenatedCharacters: Function;
-}
-
-const Equal: React.SFC<IEqualOwnProps> = ({ computeConcatenatedCharacters }) => (
+const Equal: React.SFC = () => (
   <CharacterButton
     characterForCalculate="="
     characterToDisplay="="
-    onClickAction={computeConcatenatedCharacters}
     color="secondary"
   />
 );

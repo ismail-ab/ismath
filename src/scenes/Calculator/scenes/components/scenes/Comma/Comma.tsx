@@ -1,17 +1,17 @@
 import * as React from 'react';
 import { CharacterButton } from '../../components';
+import { CalculatorContext } from '../../../Calculator/Calculator';
 
-interface ICommaOwnProps {
-  concatenateCharacters: Function;
-}
-
-const Clear: React.SFC<ICommaOwnProps> = ({ concatenateCharacters }) => (
-  <CharacterButton
-    characterForCalculate="."
-    characterToDisplay="."
-    onClickAction={concatenateCharacters}
-    color="primary"
-  />
+const Comma: React.SFC = () => (
+  <CalculatorContext.Consumer>
+    {({ concatenateCharacters }) => (
+      <CharacterButton
+        characterForCalculate="."
+        characterToDisplay="."
+        color="primary"
+      />
+    )}
+  </CalculatorContext.Consumer>
 );
 
-export default Clear;
+export default Comma;
