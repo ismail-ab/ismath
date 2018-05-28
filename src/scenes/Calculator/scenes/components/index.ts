@@ -1,1 +1,7 @@
-export { Digits } from './scenes';
+export {
+  Clear,
+  Comma,
+  Digits,
+  Equal,
+  Operators
+} from './scenes';

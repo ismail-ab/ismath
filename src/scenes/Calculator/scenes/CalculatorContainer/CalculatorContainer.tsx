@@ -1,14 +1,21 @@
 import * as React from 'react';
 import {
-  Button,
-  Grid
+  Card,
+  CardContent,
+  Grid,
+  Typography
 } from '@material-ui/core';
-import { Digits } from '../components';
+import {
+  Clear,
+  Comma,
+  Digits,
+  Equal,
+  Operators
+} from '../components';
 
 interface ICalculatorContainerState {
-  calculatorButtons: Array<string | number>;
-  characterToCalculate: string;
-  result: number;
+  concatenatedCharacters: string;
+  result: number | string;
 }
 
 class CalculatorContainer extends React.Component<{}, ICalculatorContainerState> {
@@ -16,63 +23,109 @@ class CalculatorContainer extends React.Component<{}, ICalculatorContainerState>
     super(props);
 
     this.state = {
-      calculatorButtons: ['+', '−', '*', '/', '.', 'C', '🐵'],
-      characterToCalculate: '',
-      result: 0
+      concatenatedCharacters: '',
+      result: ''
     };
 
-    this.concatCharacters = this.concatCharacters.bind(this);
+    this.clearCalculator = this.clearCalculator.bind(this);
+    this.concatenateCharacters = this.concatenateCharacters.bind(this);
+    this.computeConcatenatedCharacters = this.computeConcatenatedCharacters.bind(this);
   }
 
-  res(str: string) {
-    function calc(strr: string) {
+  clearCalculator() {
+    this.setState({
+      concatenatedCharacters: '',
+      result: ''
+    });
+  }
+
+  concatenateCharacters(character: string) {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        concatenatedCharacters: prevState.concatenatedCharacters + character,
+      };
+    });
+  }
+
+  computeConcatenatedCharacters() {
+    function evaluate(_concatenatedCharacters: string) {
       try {
-        return new Function('return ' + strr)();
+        return new Function('return ' + _concatenatedCharacters)();
       } catch {
-        return 0;
+        return 'Expression error';
       }
     }
 
     this.setState({
-      result: calc(str)
-    });
-  }
-
-  concatCharacters(character: string) {
-    this.setState((prevState) => {
-      return {
-        ...prevState,
-        characterToCalculate: prevState.characterToCalculate + character,
-      };
+      result: evaluate(this.state.concatenatedCharacters)
     });
   }
 
   render() {
     return (
-      <div>
-        <div>Res: {this.state.result}</div>
-        <div>Formula: {this.state.characterToCalculate}</div>
+      <div
+        style={{
+          height: '100%',
+          width: '100%',
+          display: 'flex',
+          position: 'absolute',
+        }}
+      >
         <Grid
           container={true}
+          direction="column"
           justify="center"
-          alignItems="center"
-          direction="row-reverse"
-          spacing={0}
-          style={{ width: '250px' }}
         >
-          <Digits concatCharacters={this.concatCharacters} />
-
           <Grid
-            item={true}
-            xs={4}
+            container={true}
+            justify="center"
           >
-            <Button
-              color="primary"
-              variant="raised"
-              onClick={this.res.bind(this, this.state.characterToCalculate)}
+            <Card style={{ width: '348px' }}>
+              <CardContent>
+                <Typography
+                  color="primary"
+                  variant="headline"
+                  component="h2"
+                  align="right"
+                  style={{ height: '40px' }}
+                >
+                  {this.state.result}
+                </Typography>
+                <Typography
+                  color="secondary"
+                  component="h2"
+                  align="right"
+                  noWrap={true}
+                  style={{
+                    height: '25px',
+                    fontSize: '1.2em'
+                  }}
+                >
+                  {this.state.concatenatedCharacters}
+                </Typography>
+                <Clear clearCalculator={this.clearCalculator} />
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid
+            container={true}
+            direction="row-reverse"
+            justify="center"
+          >
+            <Operators concatenateCharacters={this.concatenateCharacters} />
+            <Grid
+              container={true}
+              justify="center"
+              alignItems="center"
+              direction="row-reverse"
+              spacing={0}
+              style={{ width: '260px' }}
             >
-              =
-            </Button>
+              <Digits concatenateCharacters={this.concatenateCharacters} />
+              <Comma concatenateCharacters={this.concatenateCharacters} />
+              <Equal computeConcatenatedCharacters={this.computeConcatenatedCharacters} />
+            </Grid>
           </Grid>
         </Grid>
       </div >

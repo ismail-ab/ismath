@@ -1,17 +1,27 @@
 import * as React from 'react';
 import {
   Button,
-  Grid
+  Grid,
+  PropTypes
 } from '@material-ui/core';
 
 interface ICharacterButtonOwnProps {
-  character: string;
-  concatCharacters: Function;
+  characterForCalculate: string;
+  characterToDisplay: string;
+  onClickAction: Function;
+  color?: PropTypes.Color;
 }
 
-const CharacterButton: React.SFC<ICharacterButtonOwnProps> = ({ character, concatCharacters }) => {
+const CharacterButton: React.SFC<ICharacterButtonOwnProps> = (props) => {
+  const {
+    characterForCalculate,
+    characterToDisplay,
+    onClickAction,
+    color = 'primary'
+  } = props;
+
   const handleClick = (_character: string) => {
-    concatCharacters(_character);
+    onClickAction(_character);
   };
 
   return (
@@ -20,11 +30,16 @@ const CharacterButton: React.SFC<ICharacterButtonOwnProps> = ({ character, conca
       xs={4}
     >
       <Button
-        color="primary"
+        color={color}
         variant="raised"
-        onClick={() => handleClick(character)}
+        onClick={() => handleClick(characterForCalculate)}
+        style={{ 
+          height: '60px',
+          borderRadius: '0',
+          fontSize: '1.2em'
+        }}
       >
-        {character}
+        {characterToDisplay}
       </Button>
     </Grid>
   );
