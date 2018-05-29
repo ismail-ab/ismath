@@ -11,12 +11,12 @@ import {
   Equal,
   Operators,
   Screen
-} from '../components';
-import { compute } from '../helpers';
+} from './components';
+import { compute } from './helpers';
 import {
   CalculatorContext,
   ICalculatorContext
-} from '../contexts';
+} from './contexts';
 
 interface ICalculatorState extends ICalculatorContext { }
 
