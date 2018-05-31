@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Equal renders correctly 1`] = `
+<CharacterButton
+  characterToDisplay="="
+  color="secondary"
+/>
+`;

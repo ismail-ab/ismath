@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calculator renders correctly 1`] = `
+<[object Object]
+  value={
+    Object {
+      "clearCalculator": [Function],
+      "concatenateCharactersOrCompute": [Function],
+      "concatenatedCharacters": "",
+      "result": "",
+    }
+  }
+>
+  <WithStyles(GridWrapper)
+    container={true}
+    direction="column"
+    justify="center"
+    style={
+      Object {
+        "height": "100%",
+        "position": "absolute",
+        "width": "100%",
+      }
+    }
+  >
+    <WithStyles(GridWrapper)
+      container={true}
+      justify="center"
+    >
+      <WithStyles(Card)
+        style={
+          Object {
+            "width": "348px",
+          }
+        }
+      >
+        <WithStyles(CardContent)>
+          <Screen />
+          <Clear />
+        </WithStyles(CardContent)>
+      </WithStyles(Card)>
+    </WithStyles(GridWrapper)>
+    <WithStyles(GridWrapper)
+      container={true}
+      direction="row-reverse"
+      justify="center"
+    >
+      <WithStyles(GridWrapper)>
+        <Operators />
+      </WithStyles(GridWrapper)>
+      <WithStyles(GridWrapper)
+        alignItems="center"
+        container={true}
+        direction="row-reverse"
+        justify="center"
+        spacing={0}
+        style={
+          Object {
+            "width": "260px",
+          }
+        }
+      >
+        <Digits />
+        <Comma />
+        <Equal />
+      </WithStyles(GridWrapper)>
+    </WithStyles(GridWrapper)>
+  </WithStyles(GridWrapper)>
+</[object Object]>
+`;
